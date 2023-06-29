@@ -6,11 +6,15 @@ const app = express();
 app.use(express.urlencoded({extended : false}));
 app.use(express.static('public'));
 
-app.get('/',(req,res)=>{
+app.get('/login',(req,res)=>{
   res.render('login.ejs');
 });
 
-app.post('/',(req,res)=>{
+app.get('/',(req,res)=>{
+  res.render('main.ejs');
+});
+
+app.post('/login',(req,res)=>{
   if(req.body.name && req.body.email && req.body.password){
   const name = req.body.name;
   const email = req.body.email;
