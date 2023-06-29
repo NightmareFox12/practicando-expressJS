@@ -2,8 +2,25 @@ const express = require('express');
 
 const app = express();
 
+//Middleware's 
+app.use(express.urlencoded({extended : false}));
+app.use(express.static('public'));
+
 app.get('/',(req,res)=>{
-  res.send('hola');
+  res.render('login.ejs');
+});
+
+app.post('/',(req,res)=>{
+  if(req.body.name && req.body.email && req.body.password){
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  res.send('datos recibidos correctamente');
+  } 
+
+  res.send('datos fallaron exitosamente');
+  
 });
 
 
