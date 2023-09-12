@@ -4,7 +4,7 @@
   "description": "Practicando ExpressJS con nodeJS, haciendo mi primer formulario y renderizado aplicando el motor de plantillas EJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev" : "npx nodemon app.js"
   },
   "keywords": [
     "espaniol",
@@ -12,8 +12,7 @@
     "expressJS",
     "EJS",
     "primeraVez",
-    "backend",
-    "bootstrap"
+    "backend"
   ],
   "author": "NightmareFox",
   "license": "ISC",

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Binary</title>
+</head>
+<style>
+body {
+  display: grid;
+  place-items: center;
+  background: #15151dfd;
+  color: #fff;
+  font-size: 1rem;
+  font-family: sans-serif;
+  gap: 80px;
+}
+video {
+  width: 80vw;
+  height: 400px;
+}
+</style>
+<body>
+  <h2>Video Binario</h2>
+  <video class="video" controls></video>
+</body>
+<script>
+'use strict';
+
+const video = document.querySelector('.video');
+
+const receivedBinary = async () => {
+
+  const permiso = {
+    key: 'si',
+  }
+
+  const query = await fetch('http://localhost:4000/video-binary',{
+    method: 'POST',
+    body: JSON.stringify(permiso),
+  });
+
+  const res = await query.arrayBuffer();
+
+  if(res.msg) return console.log('deja el hackeo');
+
+  const blob = new Blob([res],{type: 'mp4'})
+
+  const urlVideo = URL.createObjectURL(blob)
+
+  video.src = urlVideo
+}
+receivedBinary();
+</script>
+</html>
